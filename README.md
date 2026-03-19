@@ -51,6 +51,22 @@ This delivery implements the triage agent `bridge/router`, with a canonical inpu
 4. Validate the real WhatsApp flow.
 5. Capture screenshots and a short video of the complete operation.
 
+## Delivery Status Matrix
+
+| Criterion | Status | Notes |
+|---|---|---|
+| Agent implemented with Genie | Partial | Genie integration is prepared and the team was created, but the official provider (`Claude`) was not available in runtime because of billing restrictions. |
+| Receives messages via Omni | Partial | The contract and webhook are prepared, but Omni was not validated end-to-end in this environment. |
+| Processes the defined task | Met | Triage worked across the `OPEN_TICKET`, `REQUEST_INFORMATION`, and `HIGH_SCALABLE` scenarios. |
+| Responds back through Omni | Partial | Structured reply delivery was implemented, but the full Omni/WhatsApp validation did not complete in this environment. |
+| Continuous operation with monitoring | Partial | Healthcheck, logs, and runbook were delivered, but full continuous operation still depends on Omni infrastructure. |
+| End-to-end flow `WhatsApp -> Omni -> Genie -> Omni -> WhatsApp` | Not Met | This was not validated live because of Omni startup issues on Windows and unavailability of the official Genie provider. |
+| Genie team/agent created with clear instructions | Met | `AGENTS.md` and the Genie wish were delivered and the team was created. |
+| Fallback criteria defined | Met | Friendly fallback behavior was implemented, and OpenAI fallback was validated. |
+| Logs with `conversation_id` | Met | Local logs and evidence were generated with correlation. |
+| Evidence of operation | Met | `run_evidence.py`, `healthz`, and logs were saved as local evidence. |
+| Operational runbook delivered | Met | `README.md`, `RUNBOOK.md`, and `CHECKLIST.md` were delivered. |
+
 ## Structure
 
 - `src/app.py`: HTTP server (bridge/router)
